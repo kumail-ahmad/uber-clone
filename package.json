@@ -11,10 +11,12 @@
   "dependencies": {
     "@clerk/nextjs": "^6.9.9",
     "axios": "^1.7.9",
+    "leaflet": "^1.9.4",
     "next": "15.1.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-google-places-autocomplete": "^4.1.0"
+    "react-google-places-autocomplete": "^4.1.0",
+    "react-leaflet": "^5.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
