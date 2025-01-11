@@ -1,5 +1,20 @@
+import GoogleMapSection from "@/components/Home/GoogleMapSection";
+import SearchSection from "@/components/Home/SearchSection";
+import InputBox from "@/components/Home/InputBox";
+
 export default function Home() {
-  return <div>hello</div>;
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div className="search ">
+        <SearchSection />
+        <InputBox />
+        <InputBox />
+      </div>
+      <div className="googlemap col-span-2 ">
+        <GoogleMapSection />
+      </div>
+    </div>
+  );
 }
 
 export const metadata = {

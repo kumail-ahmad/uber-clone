@@ -1,22 +1,27 @@
+import { Montserrat } from "next/font/google";
 import {
   ClerkProvider,
   SignedIn,
   SignedOut,
   UserButton,
   SignIn,
-  useUser,
 } from "@clerk/nextjs";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import Image from "next/image";
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+});
+
 export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className="antialiased">
+        <body className={`antialiased ${montserrat.className}`}>
           <header className="flex justify-between">
             <SignedIn></SignedIn>
           </header>
+
           <main>
             <SignedIn>
               <Navbar />
@@ -28,7 +33,6 @@ export default function RootLayout({ children }) {
               </div>
             </SignedOut>
           </main>
-          {/* <Image src="/banner.png" height={780} width={1500} alt=""></Image> */}
         </body>
       </html>
     </ClerkProvider>

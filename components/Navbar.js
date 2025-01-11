@@ -9,28 +9,28 @@ const Navbar = () => {
   ];
   return (
     <div>
-      <header className="flex gap-16 items-center p-3 mt-3 border-b-[5px] border-gray-200">
+      <header className="flex gap-16 items-center p-3 mt-3 border-b-[5px] bg-black border-gray-200">
         <div className="logo ">
           <Image
             src="/logo.png"
             alt="Logo"
             width={110}
             height={110}
-            className="ml-6  "
+            className="ml-6  invert"
           />
         </div>
         <div>
           <div className="flex items-center gap-8">
             {headerMenu.map((item) => {
               return (
-                <div className="flex items-center gap-2" key={item.id}>
+                <div className="flex items-center gap-2 invert" key={item.id}>
                   <Image
                     src={item.icon}
                     width={20}
                     height={20}
                     alt={item.name}
                   />
-                  <h2 className="font-sm font-bold">{item.name}</h2>
+                  <h2 className=" font-sm font-bold">{item.name}</h2>
                 </div>
               );
             })}
