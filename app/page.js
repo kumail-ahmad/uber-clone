@@ -5,10 +5,12 @@ import InputBox from "@/components/Home/InputBox";
 export default function Home() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-      <div className="search ">
+      <div className="search ml-3">
         <SearchSection />
-        <InputBox />
-        <InputBox />
+        <InputBox type="source" />
+        <InputBox type="destination" />
+
+        <button className="bg-black w-full p-3 text-white rounded-2xl mt-5 ml-3">Search</button>
       </div>
       <div className="googlemap col-span-2 ">
         <GoogleMapSection />

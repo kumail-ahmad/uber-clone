@@ -9,7 +9,7 @@ const Navbar = () => {
   ];
   return (
     <div>
-      <header className="flex gap-16 items-center p-3 mt-3 border-b-[5px] bg-black border-gray-200">
+      <header className="flex gap-16 items-center p-4  border-b-[5px] bg-black border-gray-200">
         <div className="logo ">
           <Image
             src="/logo.png"
@@ -36,7 +36,7 @@ const Navbar = () => {
             })}
           </div>
         </div>
-        <div className="user absolute top-2 right-0 p-4 ">
+        <div className="user absolute top-0 right-0 p-4 ">
           <UserButton />
         </div>
       </header>
