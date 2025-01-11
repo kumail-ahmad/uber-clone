@@ -15,13 +15,13 @@ export default function RootLayout({ children }) {
       <html lang="en">
         <body className="antialiased">
           <header className="flex justify-between">
-            <SignedIn>
-              
-            </SignedIn>
+            <SignedIn></SignedIn>
           </header>
           <main>
-            {/* <Navbar /> */}
-            <SignedIn>{children}</SignedIn>
+            <SignedIn>
+              <Navbar />
+              {children}
+            </SignedIn>
             <SignedOut>
               <div className="flex items-center justify-center h-screen">
                 <SignIn routing="hash" />
