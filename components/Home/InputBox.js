@@ -35,12 +35,12 @@ const InputBox = ({ type }) => {
   const handleSelect = (selectedAddress) => {
     setValue(selectedAddress.properties.formatted);
     setSuggestions([]);
-  
-  const { lat, lon } = selectedAddress.properties;
-  console.log("Selected Address:", selectedAddress.properties.formatted);
-  console.log("Latitude:", lat);
-  console.log("Longitude:", lon);
-};
+
+    const { lat, lon } = selectedAddress.properties;
+    console.log("Selected Address:", selectedAddress.properties.formatted);
+    console.log("Latitude:", lat);
+    console.log("Longitude:", lon);
+  };
   return (
     <div className="relative p-2 bg-gray-100 rounded-2xl mt-3 flex items-center gap-4 ml-6">
       <Image src="/dot.svg" alt="dot" width={42} height={30} />
@@ -52,8 +52,8 @@ const InputBox = ({ type }) => {
         placeholder={type === "source" ? "Pickup location" : "Drop location"}
         className="bg-transparent w-[270px] px-3 py-2 rounded-lg outline-black"
       />
+      
 
-    
       {suggestions.length > 0 && (
         <div className="autocomplete-suggestions absolute top-full left-0 mt-2 bg-white border border-gray-300 rounded-lg w-full z-10">
           {suggestions.map((suggestion) => (
@@ -67,6 +67,7 @@ const InputBox = ({ type }) => {
           ))}
         </div>
       )}
+     
     </div>
   );
 };

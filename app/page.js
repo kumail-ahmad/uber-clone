@@ -9,8 +9,16 @@ export default function Home() {
         <SearchSection />
         <InputBox type="source" />
         <InputBox type="destination" />
-
-        <button className="bg-black w-full p-3 text-white rounded-2xl mt-5 ml-3">Search</button>
+        <div className="inputsdateandtime">
+          <input
+            type="date"
+            placeholder="Today"
+            className="px-3 ml-7 mt-3 py-2 border bg-gray-100 rounded-lg outline-none "
+          />{" "}
+        </div>
+        <button className="bg-black w-full p-3 text-white rounded-2xl mt-5 ml-3">
+          Search
+        </button>
       </div>
       <div className="googlemap col-span-2 ">
         <GoogleMapSection />
