@@ -5,7 +5,7 @@ import SearchSection from "@/components/Home/SearchSection";
 import InputBox from "@/components/Home/InputBox";
 
 export default function Home() {
-  const [mapCenter, setMapCenter] = useState({ lat: 34.0768854, lon: 74.8093683 }); // Default center
+  const [mapCenter, setMapCenter] = useState({ lat: 34.0768854, lon: 74.8093683 }); 
   const [source, setSource] = useState(null);
   const [destination, setDestination] = useState(null);
 
@@ -15,12 +15,12 @@ export default function Home() {
     } else if (type === "destination") {
       setDestination(location);
     }
-    setMapCenter(location); // Update map center to the selected location
+    setMapCenter(location); 
   };
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-      {/* Search Section */}
+    
       <div className="search ml-10">
         <SearchSection />
         <InputBox
@@ -51,9 +51,9 @@ export default function Home() {
         </button>
       </div>
 
-      {/* Map Section */}
+      
       <div className="googlemap col-span-2">
-        <GoogleMapSection center={mapCenter} />
+        <GoogleMapSection center={mapCenter} type="source"/>
       </div>
     </div>
   );

@@ -4,8 +4,14 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 
-const CustomIcon = L.icon({
-  iconUrl: "/marker.svg",
+const StartIcon = L.icon({
+  iconUrl: "/start.svg",
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+  popupAnchor: [0, -40],
+});
+const DestIcon = L.icon({
+  iconUrl: "/dest.svg",
   iconSize: [40, 40],
   iconAnchor: [20, 40],
   popupAnchor: [0, -40],
@@ -17,7 +23,7 @@ const ChangeMapCenter = ({ center }) => {
   return null;
 };
 
-const GoogleMapSection = ({ center }) => {
+const GoogleMapSection = ({ center, type }) => {
   return (
     <div className="map-container ml-28 mt-16">
       <MapContainer
@@ -30,11 +36,19 @@ const GoogleMapSection = ({ center }) => {
           attribution='&copy; <a href="https://www.geoapify.com/">Geoapify</a> contributors'
         />
         <ChangeMapCenter center={center} />
-        <Marker icon={CustomIcon} position={[center.lat, center.lon]}>
-          <Popup>
-            Latitude: {center.lat}, Longitude: {center.lon}
-          </Popup>
-        </Marker>
+        {type === "source" ? (
+          <Marker icon={StartIcon} position={[center.lat, center.lon]}>
+            <Popup>
+              Latitude: {center.lat}, Longitude: {center.lon}
+            </Popup>
+          </Marker>
+        ) : (
+          <Marker icon={DestIcon} position={[center.lat, center.lon]}>
+            <Popup>
+              Latitude: {center.lat}, Longitude: {center.lon}
+            </Popup>
+          </Marker>
+        )}
       </MapContainer>
     </div>
   );

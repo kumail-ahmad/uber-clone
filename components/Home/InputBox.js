@@ -37,6 +37,9 @@ const InputBox = ({ type, onLocationSelect }) => {
     const { lat, lon } = selectedAddress.properties;
     if (onLocationSelect) {
       onLocationSelect({ lat, lon });
+      console.log("Selected Address:", selectedAddress.properties.formatted);
+      console.log("Latitude:", lat);
+      console.log("Longitude:", lon);
     }
   };
 
