@@ -9,7 +9,7 @@ const Navbar = () => {
   ];
   return (
     <div>
-      <header className="flex gap-16 items-center p-4  border-b-[5px] bg-black border-gray-200">
+      <header className="flex gap-16 items-end md:items-center p-4  border-b-[5px] bg-black border-gray-200">
         <div className="logo ">
           <Image
             src="/logo.png"
