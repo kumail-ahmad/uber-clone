@@ -33,9 +33,12 @@ const ChangeMapCenter = ({ center }) => {
 const GoogleMapSection = ({ source, destination }) => {
   const defaultSource = { lat: 34.0768854, lon: 74.8093683 };
   const defaultDest = { lat: 34.07615854, lon: 74.802683 };
-
-  const validSource = source || defaultSource;
-  const validDestination = destination || defaultDest;
+  const validSource =
+    source && source.lat && source.lon ? source : defaultSource;
+  const validDestination =
+    destination && destination.lat && destination.lon
+      ? destination
+      : defaultDest;
 
   return (
     <div className="map-container ml-28 mt-16">
@@ -46,35 +49,29 @@ const GoogleMapSection = ({ source, destination }) => {
       >
         <TileLayer
           url={`https://maps.geoapify.com/v1/tile/osm-bright/{z}/{x}/{y}.png?apiKey=${process.env.NEXT_PUBLIC_GEOAPIFY_API_KEY}`}
-          attribution='&copy; <a href="https://www.geoapify.com/">Geoapify</a> contributors'
+          attribution='&copy; <a href="https://www.geoapify.com/">Google</a> contributors'
         />
-
         <ChangeMapCenter center={validSource} />
+        <Marker
+          key={`source-${validSource.lat}-${validSource.lon}`}
+          icon={StartIcon}
+          position={[validSource.lat, validSource.lon]}
+        >
+          <Popup>
+            Source: Latitude: {validSource.lat}, Longitude: {validSource.lon}
+          </Popup>
+        </Marker>
 
-        {validSource && (
-          <Marker
-            key={`source-${validSource.lat}-${validSource.lon}`}
-            icon={StartIcon}
-            position={[validSource.lat, validSource.lon]}
-          >
-            <Popup>
-              Source: Latitude: {validSource.lat}, Longitude: {validSource.lon}
-            </Popup>
-          </Marker>
-        )}
-
-        {validDestination && (
-          <Marker
-            key={`destination-${validDestination.lat}-${validDestination.lon}`}
-            icon={DestIcon}
-            position={[validDestination.lat, validDestination.lon]}
-          >
-            <Popup>
-              Destination: Latitude: {validDestination.lat}, Longitude:{" "}
-              {validDestination.lon}
-            </Popup>
-          </Marker>
-        )}
+        <Marker
+          key={`destination-${validDestination.lat}-${validDestination.lon}`}
+          icon={DestIcon}
+          position={[validDestination.lat, validDestination.lon]}
+        >
+          <Popup>
+            Destination: Latitude: {validDestination.lat}, Longitude:{" "}
+            {validDestination.lon}
+          </Popup>
+        </Marker>
       </MapContainer>
     </div>
   );

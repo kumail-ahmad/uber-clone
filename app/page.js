@@ -5,7 +5,10 @@ import SearchSection from "@/components/Home/SearchSection";
 import InputBox from "@/components/Home/InputBox";
 
 export default function Home() {
-  const [mapCenter, setMapCenter] = useState({ lat: 34.0768854, lon: 74.8093683 }); 
+  const [mapCenter, setMapCenter] = useState({
+    lat: 34.0768854,
+    lon: 74.8093683,
+  });
   const [source, setSource] = useState(null);
   const [destination, setDestination] = useState(null);
 
@@ -15,23 +18,24 @@ export default function Home() {
     } else if (type === "destination") {
       setDestination(location);
     }
-    setMapCenter(location); 
+    setMapCenter(location);
   };
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-    
       <div className="search ml-10">
         <SearchSection />
         <InputBox
-        className="ml-5"
           type="source"
-          onLocationSelect={(location) => handleLocationSelect(location, "source")}
+          onLocationSelect={(location) =>
+            handleLocationSelect(location, "source")
+          }
         />
         <InputBox
           type="destination"
-          onLocationSelect={(location) => handleLocationSelect(location, "destination")}
-          className="mt-4"
+          onLocationSelect={(location) =>
+            handleLocationSelect(location, "destination")
+          }
         />
         <div className="inputsdateandtime flex flex-row">
           <input
@@ -51,11 +55,9 @@ export default function Home() {
         </button>
       </div>
 
-      
       <div className="googlemap col-span-2">
-        <GoogleMapSection center={mapCenter} type="source"/>
+        <GoogleMapSection source={source} destination={destination} />
       </div>
     </div>
   );
 }
-
