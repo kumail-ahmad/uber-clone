@@ -1,35 +1,43 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Image from "next/image";
 
 const InputBox = ({ type, onLocationSelect }) => {
   const [value, setValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
-
+  const [debouncedValue, setDebouncedValue] = useState("");
   const geoapifyApiKey = process.env.NEXT_PUBLIC_GEOAPIFY_API_KEY;
 
-  const fetchSuggestions = async (query) => {
-    if (!query) {
-      setSuggestions([]);
-      return;
-    }
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, 300);
 
-    try {
-      const response = await axios.get(
-        `https://api.geoapify.com/v1/geocode/autocomplete?text=${query}&limit=5&apiKey=${geoapifyApiKey}`
-      );
-      if (response.data.features) {
-        setSuggestions(response.data.features);
-      }
-    } catch (error) {
-      console.error("Error fetching autocomplete data:", error);
-    }
-  };
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [value]);
 
   useEffect(() => {
-    fetchSuggestions(value);
-  }, [value]);
+    const fetchSuggestions = async () => {
+      if (!debouncedValue) {
+        setSuggestions([]);
+        return;
+      }
+
+      try {
+        const response = await axios.get(
+          `https://api.geoapify.com/v1/geocode/autocomplete?text=${debouncedValue}&limit=5&apiKey=${geoapifyApiKey}`
+        );
+        if (response.data.features) {
+          setSuggestions(response.data.features);
+        }
+      } catch (error) {
+        console.error("Error fetching autocomplete data:", error);
+      }
+    };
+    fetchSuggestions();
+  }, [debouncedValue]);
 
   const handleSelect = (selectedAddress) => {
     setValue(selectedAddress.properties.formatted);
@@ -44,7 +52,7 @@ const InputBox = ({ type, onLocationSelect }) => {
   };
 
   return (
-    <div className="relative p-2 font-bold text-black bg-gray-100 rounded-2xl mt-3 flex items-center gap-4 md:ml-2">
+    <div className="relative p-2 font-semibold text-black bg-gray-100 rounded-2xl mt-3 flex items-center gap-4 md:ml-2">
       <input
         type="text"
         value={value}
@@ -54,9 +62,9 @@ const InputBox = ({ type, onLocationSelect }) => {
       />
       {suggestions.length > 0 && (
         <div className="autocomplete-suggestions absolute top-full left-0 mt-2 bg-white border border-gray-300 rounded-lg w-full z-10">
-          {suggestions.map((suggestion) => (
+          {suggestions.map((suggestion, index) => (
             <div
-              key={suggestion.properties.place_id}
+              key={`${suggestion.properties.place_id}-${index}`}
               className="p-2 hover:bg-gray-200 cursor-pointer"
               onClick={() => handleSelect(suggestion)}
             >
