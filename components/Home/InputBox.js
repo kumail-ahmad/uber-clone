@@ -44,13 +44,13 @@ const InputBox = ({ type, onLocationSelect }) => {
   };
 
   return (
-    <div className="relative p-2 bg-gray-100 rounded-2xl mt-3 flex items-center gap-4 md:ml-2">
+    <div className="relative p-2 font-bold text-black bg-gray-100 rounded-2xl mt-3 flex items-center gap-4 md:ml-2">
       <input
         type="text"
         value={value}
         onChange={(e) => setValue(e.target.value)}
         placeholder={type === "source" ? "Pickup location" : "Drop location"}
-        className="bg-transparent w-[270px] px-3 py-2 rounded-lg outline-none"
+        className="bg-transparent w-[270px] px-3 py-2 rounded-lg outline-none "
       />
       {suggestions.length > 0 && (
         <div className="autocomplete-suggestions absolute top-full left-0 mt-2 bg-white border border-gray-300 rounded-lg w-full z-10">
