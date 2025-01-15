@@ -41,16 +41,16 @@ export default function page() {
           <input
             type="date"
             placeholder="Today"
-            className="px-3 ml-1 mt-3 py-2 border bg-gray-100 rounded-lg outline-none "
+            className="px-3 ml-1 mt-3 py-2 border bg-gray-100 rounded-lg outline-none  md:block hidden"
           />
           <input
             type="time"
             placeholder="now"
             id="time"
-            className="px-3 ml-7 mt-3 py-2 border bg-gray-100 w-full rounded-lg outline-none"
+            className="px-3 ml-7 mt-3 py-2 border bg-gray-100 w-full rounded-lg outline-none md:block hidden"
           />
         </div>
-        <button className="bg-black w-full p-3 text-white rounded-2xl mt-5 ml-1">
+        <button className="md:bg-black md:text-white bg-white text-black font-bold w-1/2 md:w-full p-3  rounded-2xl mt-5 md:ml-1">
           Search
         </button>
       </div>

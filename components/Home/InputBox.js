@@ -44,7 +44,7 @@ const InputBox = ({ type, onLocationSelect }) => {
   };
 
   return (
-    <div className="relative p-2 bg-gray-100 rounded-2xl mt-3 flex items-center gap-4 ml-2">
+    <div className="relative p-2 bg-gray-100 rounded-2xl mt-3 flex items-center gap-4 md:ml-2">
       <input
         type="text"
         value={value}
