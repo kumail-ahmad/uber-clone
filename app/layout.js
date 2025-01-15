@@ -18,6 +18,7 @@ export default function RootLayout({ children }) {
     <ClerkProvider>
       <html lang="en">
         <body className={`antialiased ${montserrat.className}`}>
+          <link rel="shortcut icon" href="favicon.svg" type="image/x-icon" />
           <header className="flex justify-between">
             <SignedIn></SignedIn>
           </header>

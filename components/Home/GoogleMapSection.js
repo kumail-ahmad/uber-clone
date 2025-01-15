@@ -38,7 +38,7 @@ const GoogleMapSection = ({ source, destination }) => {
   const validDestination = destination || defaultDest;
 
   return (
-    <div className="map-container ml-28 mt-16">
+    <div className="map-container ml-28 mt-16 ">
       <MapContainer
         center={[validSource.lat, validSource.lon]}
         zoom={13}
