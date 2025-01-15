@@ -9,8 +9,9 @@ const Navbar = () => {
   ];
   return (
     <div>
-      <header className="flex gap-16 items-end md:items-center p-4  border-b-[5px] bg-black border-gray-200">
-        <div className="logo ">
+      <header className=" flex flex-wrap sm:flex-nowrap items-center justify-start p-4 bg-black border-b-[5px] border-gray-200">
+     
+        <div className=" logo flex justify-center sm:justify-start w-full sm:w-auto">
           <Image
             src="/logo.png"
             alt="Logo"
@@ -20,17 +21,18 @@ const Navbar = () => {
           />
         </div>
         <div>
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-8 ml-6">
             {headerMenu.map((item) => {
               return (
-                <div className="flex items-center gap-2 invert" key={item.id}>
+                <div className="flex items-center gap-2 " key={item.id}>
                   <Image
                     src={item.icon}
                     width={20}
                     height={20}
                     alt={item.name}
+                    className="invert"
                   />
-                  <h2 className=" font-sm font-bold">{item.name}</h2>
+                  <h2 className="text-white font-sm  font-bold">{item.name}</h2>
                 </div>
               );
             })}
