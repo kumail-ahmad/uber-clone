@@ -4,7 +4,7 @@ import GoogleMapSection from "@/components/Home/GoogleMapSection";
 import SearchSection from "@/components/Home/SearchSection";
 import InputBox from "@/components/Home/InputBox";
 
-export default function Home() {
+export default function page() {
   const [mapCenter, setMapCenter] = useState({
     lat: 34.0768854,
     lon: 74.8093683,
