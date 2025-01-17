@@ -133,7 +133,7 @@ const defaultDest = { lat: 34.052235, lon: -118.243683 }; // Los Angeles
         {loading && <p className="text-lg font-bold">Loading route...</p>}
         {error && <p className="text-lg text-red-500">Error: {error}</p>}
         {!loading && !error && routeCoordinates.length > 0 && (
-          <p className="text-lg font-bold">Route Loaded Successfully!</p>
+          <p className="text-lg font-bold block">Route Loaded Successfully!</p>
         )}
       </div>
     </div>
