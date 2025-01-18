@@ -29,12 +29,19 @@ const DestIcon = L.icon({
 
 const ChangeMapCenter = ({ center }) => {
   const map = useMap();
+  const [currentCenter, setCurrentCenter] = useState(null);
 
   useEffect(() => {
-    if (center && center.lat && center.lon) {
+    if (
+      center &&
+      center.lat &&
+      center.lon &&
+      (currentCenter?.lat !== center.lat || currentCenter?.lon !== center.lon)
+    ) {
       map.flyTo([center.lat, center.lon], map.getZoom());
+      setCurrentCenter(center);
     }
-  }, [center, map]);
+  }, [center, currentCenter, map]);
 
   return null;
 };
@@ -44,9 +51,8 @@ const GoogleMapSection = ({ source, destination }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const defaultSource = { lat: 40.73061, lon: -73.935242 }; // New York
-const defaultDest = { lat: 34.052235, lon: -118.243683 }; // Los Angeles
-
+  const defaultSource = { lat: 34.0834492, lon: 74.8114242 };
+  const defaultDest = { lat: 34.1135203, lon: 74.809953 };
 
   const validSource = source || defaultSource;
   const validDestination = destination || defaultDest;
@@ -64,7 +70,7 @@ const defaultDest = { lat: 34.052235, lon: -118.243683 }; // Los Angeles
 
         const waypoints = `${validSource.lat},${validSource.lon}|${validDestination.lat},${validDestination.lon}`;
         const response = await axios.get(
-          `https://api.geoapify.com/v1/routing?waypoints=${waypoints}&mode=drive&apiKey=${apiKey}`
+          `https://api.geoapify.com/v1/routing?waypoints=${waypoints}&mode=walk&apiKey=${apiKey}`
         );
 
         if (
@@ -72,9 +78,10 @@ const defaultDest = { lat: 34.052235, lon: -118.243683 }; // Los Angeles
           response.data.features.length > 0 &&
           response.data.features[0].geometry.coordinates
         ) {
-          const coordinates = response.data.features[0].geometry.coordinates.map(
-            ([lon, lat]) => [lat, lon]
-          );
+          const coordinates =
+            response.data.features[0].geometry.coordinates.flatMap(
+              (lineString) => lineString.map(([lon, lat]) => [lat, lon])
+            );
           setRouteCoordinates(coordinates);
         } else {
           throw new Error("No valid route data found in API response.");
@@ -125,7 +132,7 @@ const defaultDest = { lat: 34.052235, lon: -118.243683 }; // Los Angeles
         </Marker>
 
         {routeCoordinates.length > 0 && (
-          <Polyline positions={routeCoordinates} color="blue" weight={4} />
+          <Polyline positions={routeCoordinates} color="black" weight={4} />
         )}
       </MapContainer>
 
@@ -133,7 +140,7 @@ const defaultDest = { lat: 34.052235, lon: -118.243683 }; // Los Angeles
         {loading && <p className="text-lg font-bold">Loading route...</p>}
         {error && <p className="text-lg text-red-500">Error: {error}</p>}
         {!loading && !error && routeCoordinates.length > 0 && (
-          <p className="text-lg font-bold block">Route Loaded Successfully!</p>
+          <p className="text-lg font-bold">Route Loaded Successfully!</p>
         )}
       </div>
     </div>
