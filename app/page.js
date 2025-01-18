@@ -24,7 +24,11 @@ export default function page() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
       <div className="search ml-10">
-        <SearchSection />
+        <div className="p-2 md:pd-6 mt-16 md:ml-8 ml-1 rounded-xl">
+
+      <p className="md:text-5xl text-4xl font-extrabold">Go anywhere with Hoppr</p>
+      <p className=" md:hidden block mt-6 font-bold  ">Request a ride , hop in hoppr</p>
+        </div>
         <InputBox
           type="source"
           onLocationSelect={(location) =>
@@ -50,9 +54,7 @@ export default function page() {
             className="px-3 ml-7 mt-3 py-2 border bg-gray-100 w-full rounded-lg outline-none md:block hidden"
           />
         </div>
-        <button className="md:bg-black md:text-white bg-white text-black font-bold w-1/2 md:w-full p-3  rounded-2xl mt-5 md:ml-1">
-          Search
-        </button>
+        <SearchSection />
       </div>
 
       <div className="googlemap col-span-2">
