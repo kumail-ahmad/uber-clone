@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import axios from "axios";
+import CarListOption from "./CarListOption";
 
 const SearchSection = ({ source, destination }) => {
   const [distance, setDistance] = useState(null);
@@ -27,9 +28,10 @@ const SearchSection = ({ source, destination }) => {
         response.data.features.length > 0 &&
         response.data.features[0].properties.distance
       ) {
-        const distanceInKm = response.data.features[0].properties.distance / 1000;
+        const distanceInKm =
+          response.data.features[0].properties.distance / 1000;
         setDistance(distanceInKm);
-        console.log("Distance:", distanceInKm);  // Logging the calculated distance
+        console.log("Distance:", distanceInKm);
       } else {
         setError("Unable to calculate distance.");
       }
@@ -39,15 +41,20 @@ const SearchSection = ({ source, destination }) => {
   };
 
   return (
-    <div className="p-4">
-      <button
-        className="bg-black text-white font-bold w-full p-3 rounded-2xl mt-5"
-        onClick={handleSearch}
-      >
-        Search
-      </button>
-      {distance !== null && <p className="mt-3 text-lg">Distance: {distance} km</p>}
-      {error && <p className="mt-3 text-red-500">{error}</p>}
+    <div>
+      <div className="p-4">
+        <button
+          className="bg-black text-white font-bold w-full p-3 rounded-2xl mt-5"
+          onClick={handleSearch}
+        >
+          Search
+        </button>
+        {distance !== null && (
+          <p className="mt-3 text-lg">Distance: {distance} km</p>
+        )}
+        {error && <p className="mt-3 text-red-500">{error}</p>}
+      </div>
+      {distance ? <CarListOption /> : null}
     </div>
   );
 };
