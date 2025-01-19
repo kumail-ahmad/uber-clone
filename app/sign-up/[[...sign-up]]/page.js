@@ -1,18 +1,20 @@
-"use client"
-import { SignUp } from "@clerk/nextjs";
+"use client";
+import { SignIn, SignUp } from "@clerk/nextjs";
 import Image from "next/image";
 
-export default function SignUpPage() {
+export default function SignInPage() {
   return (
     <div>
       <Image
         src="/banner.png"
-        height={780}
+        height={180}
         width={1500}
         alt="hey"
-        className="object-contain h-full w-full"
+        className="object-contain w-full h-1/2"
       />
-      <SignUp />
+      <div className="absolute top-20 left-40">
+        <SignUp routing="path" forceRedirectUrl="/" />
+      </div>
     </div>
   );
 }

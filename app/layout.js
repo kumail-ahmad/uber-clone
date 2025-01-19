@@ -8,6 +8,7 @@ import {
 } from "@clerk/nextjs";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import Landing from "./landing/landing";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -30,7 +31,8 @@ export default function RootLayout({ children }) {
             </SignedIn>
             <SignedOut>
               <div className="flex items-center justify-center h-screen">
-                <SignIn routing="hash" />
+                <SignIn routing="path" />
+                {/* <Landing/> */}
               </div>
             </SignedOut>
           </main>

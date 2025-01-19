@@ -1,13 +1,8 @@
-"use client"
+"use client";
 import { SignIn } from "@clerk/nextjs";
 import Image from "next/image";
-import { useEffect } from "react";
 
 export default function SignInPage() {
-  useEffect(() => {
-    console.log("On Sign In page!");
-  }, []);
-  
   return (
     <div>
       <Image
@@ -18,7 +13,7 @@ export default function SignInPage() {
         className="object-contain w-full h-1/2"
       />
       <div className="absolute top-20 left-40">
-        <SignIn routing="path" />
+        <SignIn routing="path" forceRedirectUrl="/" />
       </div>
     </div>
   );
