@@ -1,16 +1,20 @@
 import { carList } from "@/utilities/carList";
-import React from "react";
+import { React, useState } from "react";
 import Image from "next/image";
 
 const CarListOption = () => {
+  const [activeIndex, setActiveIndex] = useState();
   return (
     <div className="h-[200px] overflow-auto w-[420px]">
       <p className="font-bold  mt-5 text-4xl">Choose a ride</p>
       <h1 className="font-bold text-2xl mt-5">Recomended</h1>
-      {carList.map((item) => (
+      {carList.map((item, index) => (
         <div
           key={item.id}
-          className="p-4 border rounded-md mb-2 mt-3 flex gap-2  hover:bg-gray-200 overflow-auto w-[380px] "
+          className={`p-4  rounded-lg mb-2 mt-3 flex gap-2 cursor-pointer border-black hover:bg-gray-200 overflow-auto w-[380px] ${
+            activeIndex === index ? "border-[2px]" : null
+          }`}
+          onClick={() => setActiveIndex(index)}
         >
           <Image
             src={item.image}
