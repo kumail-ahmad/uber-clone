@@ -12,7 +12,6 @@ const SearchSection = ({ source, destination }) => {
     console.log("The Source you selected is:", source);
     console.log("The Destination you selected is :", destination);
 
-
     if (!source || !destination) {
       setError("Please select both source and destination.");
       return;
@@ -40,7 +39,6 @@ const SearchSection = ({ source, destination }) => {
       const response = await axios.get(url);
       // console.log("API Response:", response.data);
 
-    
       if (
         response.data.features &&
         response.data.features.length > 0 &&
@@ -72,14 +70,13 @@ const SearchSection = ({ source, destination }) => {
         >
           Search
         </button>
-        <CarListOption />
+        
         {distance !== null && (
           <p className="mt-3 text-lg">Distance: {distance} km</p>
         )}
         {error && <p className="mt-3 text-red-500">{error}</p>}
       </div>
-      {distance !==null ?  "done" : null}
-      
+      {distance !== null ? <CarListOption distance={distance} /> : null}
     </div>
   );
 };

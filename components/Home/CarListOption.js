@@ -2,7 +2,7 @@ import { carList } from "@/utilities/carList";
 import { React, useState } from "react";
 import Image from "next/image";
 
-const CarListOption = () => {
+const CarListOption = ({ distance }) => {
   const [activeIndex, setActiveIndex] = useState();
   return (
     <div className="h-[200px] overflow-auto w-[420px]">
@@ -31,7 +31,7 @@ const CarListOption = () => {
             </div>
             <p className="text-sm">{item.desc}</p>
           </div>
-          <p className="price">₹{item.amount * 100}</p>
+          <p className="price">₹{(item.amount * distance).toFixed(2)}</p>
         </div>
       ))}
     </div>
