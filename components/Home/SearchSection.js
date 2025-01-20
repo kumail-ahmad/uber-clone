@@ -73,11 +73,11 @@ const SearchSection = ({ source, destination }) => {
           Search
         </button>
         {distance !== null && (
-          <p className="mt-3 text-lg">Distance: {distance.toFixed(2)} km</p>
+          <p className="mt-3 text-lg">Distance: {distance} km</p>
         )}
         {error && <p className="mt-3 text-red-500">{error}</p>}
       </div>
-      {distance ? <CarListOption /> : null}
+      {distance !==null ? <CarListOption /> : null}
     </div>
   );
 };
