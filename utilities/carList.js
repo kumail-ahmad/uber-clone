@@ -10,7 +10,7 @@ export const carList = [
     image: "/taxt.svg",
   },
   {
-    id: 1,
+    id: 2,
     name: "Elect-T",
     capactiy: 4,
     desc: "Affordable, zero-emission rides at everyday prices",
@@ -18,7 +18,7 @@ export const carList = [
     image: "/electric.svg",
   },
   {
-    id: 1,
+    id: 3,
     name: "Hoppr Choppr",
     capactiy: 8,
     desc: "Emergency rides at great prices",
