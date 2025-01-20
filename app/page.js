@@ -54,7 +54,7 @@ export default function Page() {
             className="px-3 ml-7 mt-3 py-2 border bg-gray-100 w-full rounded-lg outline-none md:block hidden"
           />
         </div>
-        <SearchSection />
+        <SearchSection source={source} destination={destination} />
       </div>
 
       <div className="googlemap col-span-2">
