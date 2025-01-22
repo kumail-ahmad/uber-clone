@@ -10,14 +10,14 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^6.9.9",
-    "@react-leaflet/core": "^3.0.0",
+    "@react-leaflet/core": "^2.1.0",
     "axios": "^1.7.9",
     "geolib": "^3.3.4",
     "leaflet": "^1.9.4",
-    "next": "15.1.4",
+    "next": "^15.1.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-leaflet": "^5.0.0"
+    "react-leaflet": "^4.2.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
