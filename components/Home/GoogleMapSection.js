@@ -137,7 +137,7 @@ const GoogleMapSection = ({ source, destination }) => {
       </MapContainer>
 
       <div className="mt-4">
-        {loading && <p className="text-lg font-bold">Loading route...</p>}
+        {loading && <p className="text-2xl font-bold">Loading route...</p>}
         {error && <p className="text-lg text-red-500">Error: {error}</p>}
         {!loading && !error && routeCoordinates.length > 0 && (
           <p className="text-lg font-semibold">Route Loaded Successfully!</p>
